@@ -44,4 +44,14 @@ public class ReverseList {
         }
         return pre;
     }
+    //3.使用递归
+    public ListNode reverseList3(ListNode head) {
+        while(head == null || head.next==null){
+            return head;
+        }
+        ListNode cur = reverseList(head.next);
+        head.next.next = head;
+        head.next = null;
+        return cur;
+    }
 }
