@@ -29,4 +29,12 @@ public class MirrorTree {
         }
         return root;
     }
+    //2.使用递归
+    public TreeNode mirrorTree2(TreeNode root) {
+        if(root==null) return null;
+        TreeNode temp = root.left;
+        root.left = mirrorTree(root.right);
+        root.right = mirrorTree(temp);
+        return root;
+    }
 }
