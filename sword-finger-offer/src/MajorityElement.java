@@ -29,4 +29,13 @@ public class MajorityElement {
         }
         return -1;
     }
+    //摩尔抵消法
+    public int majorityElement2(int[] nums) {
+        int votes = 0,x = 0;
+        for(int num:nums){
+            if(votes==0) x = num;
+            votes += x==num ? 1:-1;
+        }
+        return x;
+    }
 }
