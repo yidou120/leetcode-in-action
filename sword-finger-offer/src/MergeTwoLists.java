@@ -5,7 +5,7 @@
  * @Date 2020/4/24 20:49
  * @Version 1.0
  */
-public class mergeTwoLists {
+public class MergeTwoLists {
     public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
         ListNode node = new ListNode(0),cur = node;
         while(l1!=null && l2!=null){
