@@ -1,6 +1,5 @@
 package linkedlist;
 
-import java.time.Period;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -30,5 +29,47 @@ public class IsPalindrome {
             end--;
         }
         return true;
+    }
+
+    public boolean isPalindrome2(ListNode head) {
+        if(Objects.isNull(head)||Objects.isNull(head.next)){
+            return true;
+        }
+        // 找出中间结点
+        ListNode middle = middleNode(head);
+        // 反转第二部分的结点
+        ListNode last = reverseLinked(middle.next);
+        // 比较是否相等
+        while(last!=null){
+            if(last.val != head.val){
+                return false;
+            }
+            head = head.next;
+            last = last.next;
+        }
+
+        return true;
+    }
+    ListNode middleNode(ListNode head){
+        // 快慢指针
+        ListNode low = head;
+        ListNode fast = head;
+        while(fast.next!=null && fast.next.next!=null){
+            low = low.next;
+            fast = fast.next.next;
+        }
+        return low;
+    }
+    ListNode reverseLinked(ListNode node){
+        // 伪头
+        ListNode pre = null;
+        ListNode cur = node;
+        while(cur!=null){
+            ListNode tmp = cur.next;
+            cur.next = pre;
+            pre = cur;
+            cur = tmp;
+        }
+        return pre;
     }
 }
